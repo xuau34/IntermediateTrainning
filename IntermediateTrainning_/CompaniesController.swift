@@ -101,7 +101,18 @@ class CompaniesController: UITableViewController, AddCompanyDelegate {
         
         let company = companies[indexPath.row]
         
-        cell.textLabel?.text = company.name
+        
+        if let name = company.name, let founded = company.founded {
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            let foundedDateString = dateFormatter.string(from: founded)
+            
+            cell.textLabel?.text = "\(name) - Founded: \(foundedDateString)"
+        } else {
+            cell.textLabel?.text = company.name
+        }
+        
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
@@ -131,8 +142,10 @@ class CompaniesController: UITableViewController, AddCompanyDelegate {
                 
                 completionHandler(false)
             }
-            
         })
+        
+        deleteAction.backgroundColor = .lightRed
+        
         return deleteAction
     }
     
@@ -145,6 +158,9 @@ class CompaniesController: UITableViewController, AddCompanyDelegate {
             editCompanyController.delegate = self
             self.present(navController, animated: true, completion: nil)
         })
+        
+        editAction.backgroundColor = .darkBlue
+        
         return editAction
     }
     
