@@ -49,6 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appearance.isTranslucent = false
         appearance.prefersLargeTitles = true
  
+        // Not sure if the code below is compatible with iOS under 13.0
         let barAppearance = UINavigationBarAppearance()
         barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         barAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

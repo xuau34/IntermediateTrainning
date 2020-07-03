@@ -52,7 +52,6 @@ class CompaniesController: UITableViewController, AddCompanyDelegate {
     }
     
     @objc func handleAddCompany() {
-        print("Adding company..")
         
         let createCompanyController = CreateCompanyController()
         
@@ -69,6 +68,20 @@ class CompaniesController: UITableViewController, AddCompanyDelegate {
         
         let newIndexPath = IndexPath(row: companies.count-1, section: 0)
         tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
+    
+    func editCompany(company: Company) {
+        // Potential bug here
+        let row = companies.firstIndex(of: company)
+        
+        guard row != nil else {
+            print("Succeed in guarding nil editted company")
+            return
+        }
+        
+        let reloadIndexPath = IndexPath(row: row!, section: 0)
+        tableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -94,7 +107,46 @@ class CompaniesController: UITableViewController, AddCompanyDelegate {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [makeDeleteContextualAction(indexPath: indexPath), makeEditContextualAction(indexPath: indexPath)])
+    }
  
+    func makeDeleteContextualAction(indexPath: IndexPath) -> UIContextualAction {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {(action, swipeButton, completionHandler) in
+            
+            let context = CoreDataManager.shared.persistentContainer.viewContext
+            
+            context.delete( self.companies[indexPath.row] )
+            do {
+                try context.save()
+                
+                // internal data must be deleted first because the table part will fire checking row number func immediately
+                self.companies.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .top)
+                
+                completionHandler(true)
+            } catch let saveErr {
+                print( "Saving the change to delete one company:", saveErr)
+                
+                completionHandler(false)
+            }
+            
+        })
+        return deleteAction
+    }
+    
+    func makeEditContextualAction(indexPath: IndexPath) -> UIContextualAction {
+        let editAction = UIContextualAction(style: .normal, title: "Edit", handler: {(action, swipeButton, completionHandler) in
+            
+            let editCompanyController = CreateCompanyController()
+            let navController = CustomNavigationController(rootViewController: editCompanyController)
+            editCompanyController.company = self.companies[indexPath.row]
+            editCompanyController.delegate = self
+            self.present(navController, animated: true, completion: nil)
+        })
+        return editAction
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return companies.count
