@@ -48,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appearance.barTintColor = .lightRed
         appearance.isTranslucent = false
         appearance.prefersLargeTitles = true
-
+ 
         let barAppearance = UINavigationBarAppearance()
         barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         barAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
