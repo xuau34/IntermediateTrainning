@@ -14,13 +14,67 @@ protocol AddCompanyDelegate {
     func editCompany(company: Company)
 }
 
-class CreateCompanyController: UIViewController {
+class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     var delegate: AddCompanyDelegate?
     var company: Company?{
         didSet{
             nameTextField.text = company?.name
+            if let founded = company?.founded {
+                datePicker.date = founded
+            }
+            if let imageData = company?.imageData {
+                companyImageView.image = UIImage(data: imageData)
+            }
+            setupCircularImageStyle()
         }
+    }
+    
+    // translatesAutoresizingMaskIntoConstraints == false - allows the components to adjust shapes when the screen is rotated
+    
+    // to target oneself, one must be set as lazy var. This ensures it'll always has an instance
+    lazy var companyImageView: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "select_photo_empty"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Actions/Events
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFill //to not get padding or any empty
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectPhoto)))
+        
+        return imageView
+    }()
+    
+    private func setupCircularImageStyle(){
+        companyImageView.layer.cornerRadius = companyImageView.frame.width / 2
+        companyImageView.clipsToBounds = true
+        companyImageView.layer.borderColor = UIColor.darkBlue.cgColor
+        companyImageView.layer.borderWidth = 2
+    }
+    
+    @objc func handleSelectPhoto() {
+        
+        let imagePickerController = UIImagePickerController()
+        
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        
+        present(imagePickerController, animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            companyImageView.image = editedImage
+        } else if let oriImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            companyImageView.image = oriImage
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     let nameLabel: UILabel = {
@@ -79,16 +133,22 @@ class CreateCompanyController: UIViewController {
         lightBlueBackground.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         lightBlueBackground.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         lightBlueBackground.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        lightBlueBackground.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        lightBlueBackground.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        
+        view.addSubview(companyImageView)
+        companyImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 8).isActive = true
+        companyImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        companyImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        companyImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         view.addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: companyImageView.bottomAnchor).isActive = true
         nameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         view.addSubview(nameTextField)
-        nameTextField.topAnchor.constraint(equalTo: view.topAnchor).isActive = true;
+        nameTextField.topAnchor.constraint(equalTo: nameLabel.topAnchor).isActive = true;
         nameTextField.leftAnchor.constraint(equalTo: nameLabel.rightAnchor).isActive = true
         nameTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         nameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
@@ -124,6 +184,10 @@ class CreateCompanyController: UIViewController {
         
         company?.name = nameTextField.text
         company?.founded = datePicker.date
+        if let companyImage = companyImageView.image {
+            let imageData = companyImage.jpegData(compressionQuality: 0.8)
+            company?.setValue( imageData, forKey: "imageData")
+        }
         
         do {
             try context.save()
@@ -145,6 +209,13 @@ class CreateCompanyController: UIViewController {
         
         company.setValue(nameTextField.text, forKey: "name")
         company.setValue(datePicker.date, forKey: "founded")
+        
+        // Potential Bug
+        // float for the persentage quality it's gonna reserve
+        if let companyImage = companyImageView.image {
+            let imageData = companyImage.jpegData(compressionQuality: 0.8)
+            company.setValue( imageData, forKey: "imageData")
+        }
         
         do {
             try context.save()
