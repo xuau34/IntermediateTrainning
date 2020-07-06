@@ -36,10 +36,10 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
     lazy var companyImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "select_photo_empty"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill //to not get padding or any empty
         
         // Actions/Events
         imageView.isUserInteractionEnabled = true
-        imageView.contentMode = .scaleAspectFill //to not get padding or any empty
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectPhoto)))
         
         return imageView
@@ -81,6 +81,7 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
         let label = UILabel()
         label.text = "Name"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         return label
     }()
     
@@ -88,6 +89,7 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
         let textField = UITextField()
         textField.placeholder = "Enter name"
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textColor = .black
         return textField
     }()
     
@@ -95,6 +97,7 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
         let dp = UIDatePicker()
         dp.translatesAutoresizingMaskIntoConstraints = false
         dp.datePickerMode = UIDatePicker.Mode.date
+        dp.setValue(UIColor.black, forKeyPath: "textColor")
         return dp
     }()
     

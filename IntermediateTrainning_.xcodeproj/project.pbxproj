@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710663C324B2CBCA00FA3F91 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710663C224B2CBCA00FA3F91 /* CompanyCell.swift */; };
 		7130077A24ADCC8C003BCF82 /* CreateCompanyCtroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130077924ADCC8C003BCF82 /* CreateCompanyCtroller.swift */; };
 		7130D9A224AEC4BE00301313 /* CompanyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7130D9A024AEC4BE00301313 /* CompanyModel.xcdatamodeld */; };
 		7130D9A424AED7F200301313 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130D9A324AED7F200301313 /* CoreDataManager.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		710663C224B2CBCA00FA3F91 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		7130077924ADCC8C003BCF82 /* CreateCompanyCtroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyCtroller.swift; sourceTree = "<group>"; };
 		7130D9A124AEC4BE00301313 /* CompanyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CompanyModel.xcdatamodel; sourceTree = "<group>"; };
 		7130D9A324AED7F200301313 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		710663C124B2CBAA00FA3F91 /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				710663C224B2CBCA00FA3F91 /* CompanyCell.swift */,
+			);
+			path = Company;
+			sourceTree = "<group>";
+		};
 		71F7EB0D24AD709A000AA356 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 		71F7EB1824AD709A000AA356 /* IntermediateTrainning_ */ = {
 			isa = PBXGroup;
 			children = (
+				710663C124B2CBAA00FA3F91 /* Company */,
 				71F7EB1924AD709A000AA356 /* AppDelegate.swift */,
 				71F7EB1B24AD709A000AA356 /* SceneDelegate.swift */,
 				71F7EB1D24AD709A000AA356 /* CompaniesController.swift */,
@@ -153,6 +164,7 @@
 				7130D9A224AEC4BE00301313 /* CompanyModel.xcdatamodeld in Sources */,
 				7130077A24ADCC8C003BCF82 /* CreateCompanyCtroller.swift in Sources */,
 				71F7EB1E24AD709A000AA356 /* CompaniesController.swift in Sources */,
+				710663C324B2CBCA00FA3F91 /* CompanyCell.swift in Sources */,
 				71F7EB2E24ADB5BB000AA356 /* UIColor+theme.swift in Sources */,
 				71F7EB1A24AD709A000AA356 /* AppDelegate.swift in Sources */,
 				7130D9A424AED7F200301313 /* CoreDataManager.swift in Sources */,
@@ -301,6 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GH42KWG47G;
 				INFOPLIST_FILE = IntermediateTrainning_/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -318,6 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GH42KWG47G;
 				INFOPLIST_FILE = IntermediateTrainning_/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

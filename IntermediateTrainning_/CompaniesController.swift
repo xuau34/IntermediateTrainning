@@ -44,11 +44,41 @@ class CompaniesController: UITableViewController, AddCompanyDelegate {
         tableView.separatorColor = .white
         tableView.tableFooterView = UIView()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(CompanyCell.self, forCellReuseIdentifier: "cellId")
+        
+        /*
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "plus"), for: .normal)
+        button.frame = CGRect.init(x: 0, y: 20, width: 10, height: 50)
+        */
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCompany))
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
         
+        
+    }
+    
+    @objc func handleReset() {
+        
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        
+        let deleteBatchRequest = NSBatchDeleteRequest(fetchRequest: Company.fetchRequest() )
+        
+        do {
+            try context.execute(deleteBatchRequest)
+            
+            var indexPathToDelete = [IndexPath]()
+            for (index, _) in companies.enumerated() {
+                let indexPath = IndexPath(row: index, section: 0)
+                indexPathToDelete.append(indexPath)
+            }
+            companies.removeAll()
+            tableView.deleteRows(at: indexPathToDelete, with: .top)
+            
+        } catch let delErr {
+            print( "Failed on requesting deleting core data", delErr )
+        }
     }
     
     @objc func handleAddCompany() {
@@ -94,33 +124,29 @@ class CompaniesController: UITableViewController, AddCompanyDelegate {
         return 50
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "No companies available..."
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return companies.count > 0 ? 0: 150
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier:"cellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier:"cellId", for: indexPath) as! CompanyCell
         
-        cell.backgroundColor = UIColor.tealColor
-        
-        let company = companies[indexPath.row]
-        
-        
-        if let name = company.name, let founded = company.founded {
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM dd, yyyy"
-            let foundedDateString = dateFormatter.string(from: founded)
-            
-            cell.textLabel?.text = "\(name) - Founded: \(foundedDateString)"
-        } else {
-            cell.textLabel?.text = company.name
-        }
-        
-        cell.textLabel?.textColor = .white
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        if let imageData = company.imageData {
-            cell.imageView?.image = UIImage(data:  imageData)
-        }
+        cell.company = companies[indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
