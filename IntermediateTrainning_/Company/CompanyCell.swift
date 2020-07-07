@@ -37,7 +37,7 @@ class CompanyCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill //aspect ratio
         
         imageView.layer.cornerRadius = 20
-        imageView.clipsToBounds = true
+        imageView.clipsToBounds = true	
         imageView.layer.borderColor = UIColor.darkBlue.cgColor
         imageView.layer.borderWidth = 2
         

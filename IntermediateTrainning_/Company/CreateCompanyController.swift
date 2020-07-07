@@ -87,9 +87,9 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
     
     let nameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Enter name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .black
+        textField.attributedPlaceholder = NSAttributedString( string: "Enter name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray] )
         return textField
     }()
     
@@ -123,20 +123,12 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
         
         view.backgroundColor = .darkBlue
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
+        setupSaveButtonInNavBar(selector: #selector(handleSave))
+        setupCancelButton()
     }
     
     private func setupUI() {
-        let lightBlueBackground = UIView()
-        lightBlueBackground.backgroundColor = .lightBlue
-        lightBlueBackground.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(lightBlueBackground)
-        lightBlueBackground.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        lightBlueBackground.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        lightBlueBackground.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        lightBlueBackground.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        let lightBlueBackground = setupLightBlueBackground(height:350)
         
         view.addSubview(companyImageView)
         companyImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 8).isActive = true
@@ -163,22 +155,14 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
         datePicker.bottomAnchor.constraint(equalTo: lightBlueBackground.bottomAnchor).isActive = true
     }
     
-    @objc func handleCancel(){
-        dismiss(animated: true, completion: nil)
-    }
-    
     @objc func handleSave(){
-        guard (nameTextField.text != nil) else {
-            return
-        }
+        guard (nameTextField.text != nil) else { return }
         
         if self.company == nil {
             handleCreateSave()
         } else {
             handleEditSave()
         }
-        
-        
         
     }
     

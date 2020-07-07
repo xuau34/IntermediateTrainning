@@ -5,7 +5,13 @@
         <attribute name="imageData" optional="YES" attributeType="Binary"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Employee" representedClassName="Employee" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
     <elements>
         <element name="Company" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Employee" positionX="-63" positionY="9" width="128" height="58"/>
+        <element name="Entity" positionX="-63" positionY="9" width="128" height="43"/>
     </elements>
 </model>
