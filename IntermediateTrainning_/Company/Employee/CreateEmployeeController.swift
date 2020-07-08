@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddEmployeeDelegate {
-    func addEmployee(employee: Employee)
+    func didAddEmployee(employee: Employee)
 }
 
 class CreateEmployeeController: UIViewController {
@@ -49,6 +49,15 @@ class CreateEmployeeController: UIViewController {
         return textField
     }()
     
+    let employeeTypeSegmentedControl: UISegmentedControl = {
+        //https://stackoverflow.com/questions/56436559/how-to-change-the-colors-of-a-segment-in-a-uisegmentedcontrol-in-ios-13
+        let sc = UISegmentedControl(items: EmployeeType.allTypes)
+        sc.selectedSegmentIndex = 0
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        sc.backgroundColor = .darkBlue
+        return sc
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,6 +78,7 @@ class CreateEmployeeController: UIViewController {
         guard let company = self.company else { return }
         guard let employeeName = nameTextField.text else { return }
         guard let birthdayString = birthdayTextField.text else { return }
+        guard let employeeType = employeeTypeSegmentedControl.titleForSegment(at: employeeTypeSegmentedControl.selectedSegmentIndex) else { return }
         
         if birthdayString.isEmpty {
             presentAlert(title: "Empty birthday", message: "Please enter birthday.")
@@ -83,16 +93,16 @@ class CreateEmployeeController: UIViewController {
         }
         
         
-        let (employee, error) = CoreDataManager.shared.createEmployeeIntoCoreData(employeeName: employeeName, birthday: birthdayDate, company: company)
+        let (employee, error) = CoreDataManager.shared.createEmployeeIntoCoreData(employeeName: employeeName, employeeType: employeeType, birthday: birthdayDate, company: company)
         if error == nil {
             dismiss(animated: true, completion: {
-                self.addEmployeeDelegate?.addEmployee(employee: employee!)
+                self.addEmployeeDelegate?.didAddEmployee(employee: employee!)
             })
         }
     }
     
     private func setupUI() {
-        _ = setupLightBlueBackground(height: 100)
+        _ = setupLightBlueBackground(height: 155)
         
         view.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -117,6 +127,12 @@ class CreateEmployeeController: UIViewController {
         birthdayTextField.leftAnchor.constraint(equalTo: birthdayLabel.rightAnchor).isActive = true
         birthdayTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         birthdayTextField.bottomAnchor.constraint(equalTo: birthdayLabel.bottomAnchor).isActive = true
+        
+        view.addSubview(employeeTypeSegmentedControl)
+        employeeTypeSegmentedControl.topAnchor.constraint(equalTo: birthdayLabel.bottomAnchor, constant: 5).isActive = true
+        employeeTypeSegmentedControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        employeeTypeSegmentedControl.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        employeeTypeSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     private func presentAlert(title: String, message: String) {

@@ -15,6 +15,7 @@
 		710663CF24B423C800FA3F91 /* CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710663CE24B423C800FA3F91 /* CreateEmployeeController.swift */; };
 		7115425924B44BC000EE452B /* EmployeesController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115425824B44BC000EE452B /* EmployeesController+TableView.swift */; };
 		7115425B24B44D1A00EE452B /* EmployeesController+CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115425A24B44D1A00EE452B /* EmployeesController+CreateEmployeeController.swift */; };
+		7115425D24B568B800EE452B /* EmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115425C24B568B800EE452B /* EmployeeType.swift */; };
 		7130077A24ADCC8C003BCF82 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130077924ADCC8C003BCF82 /* CreateCompanyController.swift */; };
 		7130D9A424AED7F200301313 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130D9A324AED7F200301313 /* CoreDataManager.swift */; };
 		7197FEAC24B43B1300811A28 /* IntermediateTrainning.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7197FEAA24B43B1300811A28 /* IntermediateTrainning.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 		710663CE24B423C800FA3F91 /* CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmployeeController.swift; sourceTree = "<group>"; };
 		7115425824B44BC000EE452B /* EmployeesController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmployeesController+TableView.swift"; sourceTree = "<group>"; };
 		7115425A24B44D1A00EE452B /* EmployeesController+CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmployeesController+CreateEmployeeController.swift"; sourceTree = "<group>"; };
+		7115425C24B568B800EE452B /* EmployeeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeType.swift; sourceTree = "<group>"; };
 		7130077924ADCC8C003BCF82 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 		7130D9A324AED7F200301313 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7197FEAB24B43B1300811A28 /* IntermediateTrainning.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IntermediateTrainning.xcdatamodel; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				710663CE24B423C800FA3F91 /* CreateEmployeeController.swift */,
 				7115425824B44BC000EE452B /* EmployeesController+TableView.swift */,
 				7115425A24B44D1A00EE452B /* EmployeesController+CreateEmployeeController.swift */,
+				7115425C24B568B800EE452B /* EmployeeType.swift */,
 			);
 			path = Employee;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				710663C724B4081800FA3F91 /* CompaniesController+TableView.swift in Sources */,
 				7130D9A424AED7F200301313 /* CoreDataManager.swift in Sources */,
 				71F7EB1C24AD709A000AA356 /* SceneDelegate.swift in Sources */,
+				7115425D24B568B800EE452B /* EmployeeType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,12 +11,17 @@ import UIKit
 class EmployeesController: UITableViewController{
     
     var company: Company?
-    var employees = [Employee]()
     let cellId = "EmployeeCell"
+    let employeeTypes = EmployeeType.allTypes
+    var allEmployees = [[Employee()]]
     
     func fetchEmployees() {
         guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
-        self.employees = companyEmployees
+        
+        allEmployees = []
+        for employeeType in EmployeeType.allTypes {
+            allEmployees.append( companyEmployees.filter({ $0.type == employeeType }))
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

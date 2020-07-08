@@ -9,10 +9,11 @@
 import UIKit
 
 extension EmployeesController: AddEmployeeDelegate {
-    func addEmployee(employee: Employee) {
-        employees.append(employee)
+    func didAddEmployee(employee: Employee) {
+        let section = employeeTypes.firstIndex(of: employee.type ?? "Staff") ?? 0
+        allEmployees[section].append(employee)
         
-        let newIndexPath = IndexPath(row: employees.count-1, section: 0)
+        let newIndexPath = IndexPath(row: allEmployees[section].count-1, section: section)
         tableView.insertRows(at: [newIndexPath], with: .automatic)
     }
 }
