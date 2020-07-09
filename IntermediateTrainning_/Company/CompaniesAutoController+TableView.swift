@@ -1,14 +1,15 @@
 //
-//  CompaniesController+TableView.swift
+//  CompaniesAutoController+TableView.swift
 //  IntermediateTrainning_
 //
-//  Created by 李宓2號 on 2020/7/7.
+//  Created by 李宓2號 on 2020/7/9.
 //  Copyright © 2020 Mia. All rights reserved.
 //
 
 import UIKit
 
-extension CompaniesController {
+extension CompaniesAutoController {
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .lightBlue
@@ -29,13 +30,14 @@ extension CompaniesController {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return companies.count > 0 ? 0: 150
+        let count = fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        return count > 0 ? 0: 150
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier:"cellId", for: indexPath) as! CompanyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CompanyCell
         
-        cell.company = companies[indexPath.row]
+        cell.company = self.fetchedResultsController.object(at: indexPath)
         
         return cell
     }
@@ -52,14 +54,15 @@ extension CompaniesController {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {(action, swipeButton, completionHandler) in
             
             let context = CoreDataManager.shared.persistentContainer.viewContext
+            let company = self.fetchedResultsController.object(at: indexPath)
             
-            context.delete( self.companies[indexPath.row] )
+            context.delete( company )
             do {
                 try context.save()
                 
                 // internal data must be deleted first because the table part will fire checking row number func immediately
-                self.companies.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .top)
+                //self.companies.remove(at: indexPath.row)
+                //self.tableView.deleteRows(at: [indexPath], with: .top)
                 
                 completionHandler(true)
             } catch let saveErr {
@@ -79,8 +82,8 @@ extension CompaniesController {
             
             let editCompanyController = CreateCompanyController()
             let navController = CustomNavigationController(rootViewController: editCompanyController)
-            editCompanyController.company = self.companies[indexPath.row]
-            editCompanyController.delegate = self
+            editCompanyController.company = self.fetchedResultsController.fetchedObjects?[indexPath.row]
+            //editCompanyController.delegate = self
             self.present(navController, animated: true, completion: nil)
         })
         
@@ -90,7 +93,7 @@ extension CompaniesController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return companies.count
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-    
+
 }

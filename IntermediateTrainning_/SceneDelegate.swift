@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         navigationBarSetUp()
         
-        let companiesController = CompaniesController()
+        let companiesController = CompaniesAutoController()
         //dummyViewcontroller.view.backgroundColor = .blue
         let navController = CustomNavigationController(rootViewController: companiesController) //CustomNavigationController for changing the style of the top status bar
         
