@@ -11,9 +11,16 @@ import UIKit
 extension CompaniesAutoController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .lightBlue
-        return view
+        let label = IndentedLabel()
+        label.text = fetchedResultsController.sections?[section].name
+        label.backgroundColor = .lightBlue
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .darkBlue
+        return label
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -29,8 +36,9 @@ extension CompaniesAutoController {
         return label
     }
     
+    // potential bug: when open the section property of NSFetchedResultsController, it won't check below anymore
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let count = fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        let count = fetchedResultsController.fetchedObjects?.count ?? 0
         return count > 0 ? 0: 150
     }
     

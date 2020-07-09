@@ -53,9 +53,9 @@ extension EmployeesController {
             dateFormatter.dateFormat = "MMM dd, yyyy"
             let birthdayString = dateFormatter.string(from: birthday)
             
-            cell.textLabel?.text = "\(employee.name ?? "") - \(birthdayString)"
+            cell.textLabel?.text = "\(employee.fullname ?? "") - \(birthdayString)"
         } else {
-            cell.textLabel?.text = company?.name
+            cell.textLabel?.text = employee.fullname
         }
         
         return cell

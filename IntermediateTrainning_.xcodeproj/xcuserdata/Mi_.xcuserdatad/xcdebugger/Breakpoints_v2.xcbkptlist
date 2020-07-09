@@ -7,17 +7,155 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9730A0C1-0C59-46ED-8D58-D8B5D27EEFD9"
+            uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IntermediateTrainning_/Company/CompaniesController+TableView.swift"
+            filePath = "IntermediateTrainning_/Company/CompaniesAutoController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "tableView(_:trailingSwipeActionsConfigurationForRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6 - d7a1e457d8afb55b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntermediateTrainning_.CompaniesAutoController.fetchedResultsController.getter : __C.NSFetchedResultsController&lt;IntermediateTrainning_.Company&gt;"
+                  moduleName = "IntermediateTrainning_"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mi_/Homework/LBTA/Intermediate%20Training%20Core%20Data/IntermediateTraining01_stylizing_ui/IntermediateTrainning_/IntermediateTrainning_/Company/CompaniesAutoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6 - c5c9a98dd2e37e0c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.NSFetchedResultsController&lt;IntermediateTrainning_.Company&gt; in IntermediateTrainning_.CompaniesAutoController.fetchedResultsController.getter : __C.NSFetchedResultsController&lt;IntermediateTrainning_.Company&gt;"
+                  moduleName = "IntermediateTrainning_"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mi_/Homework/LBTA/Intermediate%20Training%20Core%20Data/IntermediateTraining01_stylizing_ui/IntermediateTrainning_/IntermediateTrainning_/Company/CompaniesAutoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6 - 493fa87af3d35d47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntermediateTrainning_.CompaniesAutoController.fetchedResultsController.setter : __C.NSFetchedResultsController&lt;IntermediateTrainning_.Company&gt;"
+                  moduleName = "IntermediateTrainning_"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mi_/Homework/LBTA/Intermediate%20Training%20Core%20Data/IntermediateTraining01_stylizing_ui/IntermediateTrainning_/IntermediateTrainning_/Company/CompaniesAutoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6 - 4ff7c7d93597b356"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntermediateTrainning_.CompaniesAutoController.fetchedResultsController.modify : __C.NSFetchedResultsController&lt;IntermediateTrainning_.Company&gt;"
+                  moduleName = "IntermediateTrainning_"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mi_/Homework/LBTA/Intermediate%20Training%20Core%20Data/IntermediateTraining01_stylizing_ui/IntermediateTrainning_/IntermediateTrainning_/Company/CompaniesAutoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6 - 3a3a76544319bc7e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntermediateTrainning_.CompaniesAutoController.fetchedResultsController.modify : __C.NSFetchedResultsController&lt;IntermediateTrainning_.Company&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "IntermediateTrainning_"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mi_/Homework/LBTA/Intermediate%20Training%20Core%20Data/IntermediateTraining01_stylizing_ui/IntermediateTrainning_/IntermediateTrainning_/Company/CompaniesAutoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6 - 304ebe3d876c3313"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntermediateTrainning_.CompaniesAutoController.init(style: __C.UITableViewStyle) -&gt; IntermediateTrainning_.CompaniesAutoController"
+                  moduleName = "IntermediateTrainning_"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mi_/Homework/LBTA/Intermediate%20Training%20Core%20Data/IntermediateTraining01_stylizing_ui/IntermediateTrainning_/IntermediateTrainning_/Company/CompaniesAutoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6 - 7cb0f4ced98cb4b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntermediateTrainning_.CompaniesAutoController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; IntermediateTrainning_.CompaniesAutoController"
+                  moduleName = "IntermediateTrainning_"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mi_/Homework/LBTA/Intermediate%20Training%20Core%20Data/IntermediateTraining01_stylizing_ui/IntermediateTrainning_/IntermediateTrainning_/Company/CompaniesAutoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "AC77515D-36F2-4872-9497-A66EB384BDA6 - ff5480c897cd427b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IntermediateTrainning_.CompaniesAutoController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;IntermediateTrainning_.CompaniesAutoController&gt;"
+                  moduleName = "IntermediateTrainning_"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mi_/Homework/LBTA/Intermediate%20Training%20Core%20Data/IntermediateTraining01_stylizing_ui/IntermediateTrainning_/IntermediateTrainning_/Company/CompaniesAutoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AFDEC16-0BBD-431A-B22B-4650F2D0F70F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IntermediateTrainning_/Company/CompaniesAutoController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -21,6 +21,8 @@ class CompanyCell: UITableViewCell {
                 nameFoundedDateLabel.text = "\(name) - Founded: \(foundedDateString)"
             } else {
                 nameFoundedDateLabel.text = company?.name
+                
+                nameFoundedDateLabel.text = "\(company?.name ?? "") - \(company?.numOfEmployees)"
             }
             
             if let imageData = company?.imageData {
