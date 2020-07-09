@@ -12,6 +12,7 @@ import CoreData
 class CompaniesController: UITableViewController {
     
     var companies: [Company] = []
+    let cellId = "CompaniesControllerCellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class CompaniesController: UITableViewController {
         tableView.separatorColor = .white
         tableView.tableFooterView = UIView()
         
-        tableView.register(CompanyCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(CompanyCell.self, forCellReuseIdentifier: cellId)
         
         /*
         let button = UIButton()

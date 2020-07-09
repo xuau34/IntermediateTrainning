@@ -33,7 +33,10 @@ class CompaniesAutoController: UITableViewController, NSFetchedResultsController
         
         tableView.register(CompanyCell.self, forCellReuseIdentifier: cellId)
         navigationItem.title = "Auto Companies"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(handleAdd))
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(handleAdd)),
+            UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(handleDelete))
+        ]
     }
     
     @objc private func handleAdd() {
@@ -45,6 +48,25 @@ class CompaniesAutoController: UITableViewController, NSFetchedResultsController
             try context.save()
         } catch let saveErr {
             print("Failed on saving company in CompaniesAutoController:", saveErr)
+        }
+    }
+    
+    @objc private func handleDelete() {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let request: NSFetchRequest<Company> = Company.fetchRequest()
+        request.predicate = NSPredicate(format: "name CONTAINS %@", "0")
+        do {
+            let companies = try context.fetch(request)
+            companies.forEach({(company) in
+                context.delete(company)
+            })
+            do {
+                try context.save()
+            } catch let saveErr {
+                print("Failed on saving context", saveErr)
+            }
+        } catch let fetchErr {
+            print("Failed on fetching error", fetchErr)
         }
     }
 }

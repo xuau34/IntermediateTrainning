@@ -33,7 +33,7 @@ extension CompaniesController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier:"cellId", for: indexPath) as! CompanyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier:cellId, for: indexPath) as! CompanyCell
         
         cell.company = companies[indexPath.row]
         
